@@ -4,6 +4,9 @@ password = password.toUpperCase();
 let passwordLength = password.length;
 let misses = 0;
 
+let yes = new Audio("sounds/yes.wav");
+let no = new Audio("sounds/no.wav");
+
 let hiddenPassword = "";
 
 let lettersArray = new Array(35);
@@ -92,19 +95,30 @@ function check(nr) {
     document.getElementById(id).style.color = "#0C0";
     document.getElementById(id).style.border = "3px solid #0C0";
     document.getElementById(id).style.cursor = "default";
+    yes.play();
 
     showPassword();
   } else {
-    
+
     let id = "letter" + nr;
     document.getElementById(id).style.background = "#300";
     document.getElementById(id).style.color = "#C00";
     document.getElementById(id).style.border = "3px solid #C00";
     document.getElementById(id).style.cursor = "default";
+    document.getElementById(id).setAttribute("onclick",";");
+    no.play();
 
     misses++;
     document.getElementById("image").innerHTML = '<img src="img/s' + misses + '.jpg">'
   }
 
-  showPassword();
+  if (password == hiddenPassword) {
+    document.getElementById("letters").innerHTML = 'Brawo! Odgadnięte hasło:<br/>' + password +
+      '<br/><br/><span class="win" onclick="location.reload()">JESZCZE RAZ?</span>';
+  }
+
+  if (misses >= 9) {
+    document.getElementById("letters").innerHTML = 'Przegrana.<br/><br/><span class="loss" onclick="location.reload()">JESZCZE RAZ?</span>';
+  }
+
 }

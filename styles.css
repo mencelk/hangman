@@ -52,3 +52,23 @@ body {
   color: white;
   border: 3px solid #fff;
 }
+
+.win {
+  color: #0C0;
+  cursor: pointer;
+  font-size: 48px;
+}
+
+.win:hover {
+  color: white;
+}
+
+.loss {
+  color: #C00;
+  cursor: pointer;
+  font-size: 48px;
+}
+
+.loss:hover {
+  color: white;
+}
