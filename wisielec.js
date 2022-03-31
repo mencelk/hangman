@@ -2,6 +2,7 @@ let password = "Bez pracy nie ma kołaczy";
 password = password.toUpperCase();
 
 let passwordLength = password.length;
+let misses = 0;
 
 let hiddenPassword = "";
 
@@ -59,13 +60,51 @@ function showLetters() {
   let letters = "";
 
   for (i = 0; i<35; i++) {
-    letters = letters + '<div class="letter">' + lettersArray[i] + '</div>';
+    let element = "letter" + i;
+    letters = letters + '<div class="letter" onclick="check(' + i + ')" id="' + element + '">' + lettersArray[i] + '</div>';
     if (i%7 == 6) letters = letters + '<div style="clear:both;"'
   }
 
   document.getElementById("letters").innerHTML = letters;
-  
 
+  showPassword();
+}
+
+String.prototype.setChar = function(position, letter) {
+  if (position > this.length - 1)
+    return this.toString();
+  else return this.substr(0, position) + letter + this.substr(position + 1);
+}
+
+function check(nr) {
+  let hitted = false;
+
+  for (i = 0; i < passwordLength; i++) {
+    if (password.charAt(i) == lettersArray[nr]) {
+      hiddenPassword = hiddenPassword.setChar(i, lettersArray[nr]);
+      hitted = true;
+    }
+  }
+
+  if (hitted == true) {
+    let id = "letter" + nr;
+    document.getElementById(id).style.background = "#030";
+    document.getElementById(id).style.color = "#0C0";
+    document.getElementById(id).style.border = "3px solid #0C0";
+    document.getElementById(id).style.cursor = "default";
+
+    showPassword();
+  } else {
+    
+    let id = "letter" + nr;
+    document.getElementById(id).style.background = "#300";
+    document.getElementById(id).style.color = "#C00";
+    document.getElementById(id).style.border = "3px solid #C00";
+    document.getElementById(id).style.cursor = "default";
+
+    misses++;
+    document.getElementById("image").innerHTML = '<img src="img/s' + misses + '.jpg">'
+  }
 
   showPassword();
 }

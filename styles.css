@@ -2,6 +2,8 @@ body {
   background-color: #000;
   color: lightgray;
   font-size: 28px;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
 }
 
 #container {
@@ -43,4 +45,10 @@ body {
   border-radius: 15px;
   float: left;
   cursor: pointer;
+}
+
+.letter:hover {
+  background-color: #222;
+  color: white;
+  border: 3px solid #fff;
 }
