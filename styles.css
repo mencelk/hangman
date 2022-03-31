@@ -1,7 +1,7 @@
 body {
   background-color: #000;
   color: lightgray;
-  font-size: 28;
+  font-size: 28px;
 }
 
 #container {
@@ -11,7 +11,6 @@ body {
 }
 
 #password {
-  /* border: 1px solid red; */
   width: 900px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -21,7 +20,6 @@ body {
 }
 
 #image {
-  /* border: 1px solid red; */
   float: left;
   width: 450px;
   text-align: center;
@@ -29,9 +27,20 @@ body {
 }
 
 #letters {
-  /* border: 1px solid red; */
   float: left;
   width: 450px;
   text-align: center;
   min-height: 280px;
+}
+
+.letter {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  border: 3px solid gray;
+  border-radius: 15px;
+  float: left;
+  cursor: pointer;
 }
